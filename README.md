@@ -9,6 +9,7 @@ I often abbereviate the project as IA and will refer to it as such in this Readm
 - This utility only operates when you initiate a Conversion, so outside of that it is safe, It's highly recommended to enable "make duplicate" whenever you attempt to convert.
 - There may be bugs, please report them on the Github Issues page.
 - Pull Requests appreciated, just please provide a description of what your Pull-Request attempts to accomplish.
+- This may push a lot of Errors into the Console Related to the Unity Animator. These are all related to how Animator Rebuilding is Handled in `AnimatorRebuilder.cs`, if anyone would like to have a crack at fixing up my mess please be my guest.
 
 ## What is the Goal of this Project?
 To be a Unity Version/Platform Agnostic Utility to make conversion of an Avatar from a Social VR Platform's SDK to Another.
