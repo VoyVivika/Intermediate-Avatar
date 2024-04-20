@@ -17,20 +17,22 @@ A secondary, more lofty goal, is to be an Avatar Creation Utility in-it-of-itsel
 
 ## Currently Supported Games
 
-|No|❌|
-|Yes|✅|
-|Will Not|⛔|
+A platform will be listed here if it is not planned or support is being worked on.
+
+No = ❌
+Yes = ✅
+Will Not = ⛔
 
 IA = Intermediate Avatar, this System
 
-A platform will be listed here if it is not planned or support is being worked on.
+| Platform/Game | Import (Into IA) | Export (From IA) | Minimum Supported SDK/CCK Version     |
+|:-------------:|:----------------:|:----------------:|:-------------------------------------:|
+| VRChat        |       ✅         |        ❌        | SDK 3.5.0 (2022.3.6f1)                |
+| ChilloutVR    |       ❌         |        ✅        | CCK 3.8 (2021.3.23f1)                 |
 
-| Platform/Game | Import (Into IA) | Export (From IA) | Minimum Supported SDK/CCK Version |
-|:-------------:|:----------------:|:----------------:|:---------------------------------:|
-| VRChat        |       ✅         |        ❌        | SDK 3.5.0 (2022.3.6f1)            |
-| ChilloutVR    |       ❌         |        ✅        | CCK 3.8 (2021.3.23f1)             |
+Resonite/Neos do not have Unity Editor SDKs, it will not be supported because it cannot be supported.
 
-** Todo: **
+**Todo:**
 - Upgrade Supported VRC SDK Version to Latest to Support Newer Features (3.5.2 as of writing)
 - Upgrade Supported CVR CCK Version to Latest to Support Newer Features (3.9 as of writing)
 
