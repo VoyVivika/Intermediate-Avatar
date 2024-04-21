@@ -9,6 +9,8 @@ using VRC.SDK3.Avatars.Components;
 
 #endif
 
+#if UNITY_EDITOR
+
 namespace Voy.IntermediateAvatar.UI
 {
 
@@ -114,3 +116,5 @@ namespace Voy.IntermediateAvatar.UI
 
     }
 }
+
+#endif

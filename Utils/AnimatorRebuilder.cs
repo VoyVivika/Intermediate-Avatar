@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Voy.IntermediateAvatar;
+
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Animations;
-using Voy.IntermediateAvatar;
 
 namespace Voy.IntermediateAvatar.Utils
 {
@@ -1040,3 +1042,5 @@ namespace Voy.IntermediateAvatar.Utils
     }
 
 }
+
+#endif

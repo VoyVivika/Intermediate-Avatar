@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+
+#if UNITY_EDITOR
 using Voy.IntermediateAvatar.Components;
 using Voy.IntermediateAvatar.Behaviours;
 using Voy.IntermediateAvatar.Utils;
 using Voy.IntermediateAvatar;
-using System.Linq;
-
-#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Animations;
 #endif
@@ -57,6 +57,8 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
 
             //Lipsync
             SetLipsync(cvrAvatar, iaAvatar, hasLipsyncBlend);
+
+            SetupEyeLook(cvrAvatar, iaAvatar);
 
             //Eyelook
             EyelookResolver(cvrAvatar, iaAvatar);
@@ -945,6 +947,63 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
 
         }
 
+        private static void SetupEyeLook(CVRAvatar cvrAvatar, IAAvatar iaAvatar)
+        {
+            if (!iaAvatar.UseEyeLook) return;
+
+            cvrAvatar.eyeMovementInfo = new()
+            {
+                type = CVRAvatar.CVRAvatarEyeLookMode.Transform
+            };
+
+            CVRAvatar.EyeMovementInfoEye rightEye = new CVRAvatar.EyeMovementInfoEye();
+            rightEye.isLeft = false;
+            rightEye.eyeTransform = iaAvatar.RightEyeBone;
+
+            CVRAvatar.EyeMovementInfoEye leftEye = new CVRAvatar.EyeMovementInfoEye();
+            leftEye.isLeft = true;
+            leftEye.eyeTransform = iaAvatar.LeftEyeBone;
+
+            if (iaAvatar.EyeLookUp != null)
+            {
+                rightEye.eyeAngleLimitUp = getLookLimit(iaAvatar.EyeLookUp.Right.eulerAngles.x);
+                leftEye.eyeAngleLimitUp = getLookLimit(iaAvatar.EyeLookUp.Left.eulerAngles.x);
+            }
+
+            if (iaAvatar.EyeLookDown != null)
+            {
+                rightEye.eyeAngleLimitDown = getLookLimit(iaAvatar.EyeLookDown.Right.eulerAngles.x);
+                leftEye.eyeAngleLimitDown = getLookLimit(iaAvatar.EyeLookDown.Left.eulerAngles.x);
+            }
+
+            // I hope I'm doing this right. Why in/out instead of left/right?
+            if (iaAvatar.EyeLookLeft != null)
+            {
+                rightEye.eyeAngleLimitIn = getLookLimit(iaAvatar.EyeLookLeft.Right.eulerAngles.y); ;
+                leftEye.eyeAngleLimitIn = getLookLimit(iaAvatar.EyeLookLeft.Left.eulerAngles.y); ;
+            }
+
+            // I hope I'm doing this right. Why in/out instead of left/right?
+            if (iaAvatar.EyeLookRight != null)
+            {
+                rightEye.eyeAngleLimitOut = getLookLimit(iaAvatar.EyeLookRight.Right.eulerAngles.y); ;
+                leftEye.eyeAngleLimitOut = getLookLimit(iaAvatar.EyeLookRight.Left.eulerAngles.y); ;
+            }
+
+            cvrAvatar.eyeMovementInfo.eyes = new CVRAvatar.EyeMovementInfoEye[] { rightEye, leftEye };
+        }
+
+        private static float getLookLimit(float rotation)
+        {
+
+            float limit = rotation;
+
+            if (limit > 180)
+                limit = limit - 360;
+
+            return limit;
+        }
+
         private static void SetLipsync(CVRAvatar cvrAvatar, IAAvatar iaAvatar, bool hasLipsyncBlend = false)
         {
             cvrAvatar.visemeMode = ResolveVisemeMode(iaAvatar.lipsyncMode);
@@ -964,11 +1023,10 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
 
         public static void EyelookResolver(CVRAvatar cvrAvatar, IAAvatar iaAvatar, bool hasBlinkBlend = false)
         {
-            if (cvrAvatar.bodyMesh != null && hasBlinkBlend)
+            if (iaAvatar.eyelidType == IAAvatar.EyelidType.Blendshapes && cvrAvatar.bodyMesh != null && hasBlinkBlend)
             {
                 cvrAvatar.blinkBlendshape[0] = cvrAvatar.bodyMesh.sharedMesh.GetBlendShapeName(iaAvatar.EyelidsBlendshapes[0]);
             }
-
         }
 
         public static CVRAvatar.CVRAvatarVisemeMode ResolveVisemeMode(IntermediateAvatar.Components.IAAvatar.LipsyncMode iaLipsync)

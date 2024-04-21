@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Voy.IntermediateAvatar.Components;
-using Voy.IntermediateAvatar.Behaviours;
-using Voy.IntermediateAvatar.Utils;
-using Voy.IntermediateAvatar;
 using System.Linq;
 
 #if UNITY_EDITOR
+using Voy.IntermediateAvatar.Components;
+using Voy.IntermediateAvatar.Utils;
+using Voy.IntermediateAvatar.Behaviours;
+using Voy.IntermediateAvatar;
 using UnityEditor;
 using UnityEditor.Animations;
 #endif

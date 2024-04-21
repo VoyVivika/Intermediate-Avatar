@@ -1,15 +1,19 @@
 ﻿using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor.Animations;
 using UnityEditor;
+#endif
 using System.Linq;
 using System;
 using System.IO;
 using Voy.IntermediateAvatar.Components;
 using Voy.IntermediateAvatar.MenuSystem;
 
+#if UNITY_EDITOR
 namespace Voy.IntermediateAvatar.Utils
 {
+
     // Copyright (c) 2020 gatosyocora
     // Copyright (c) 2023 VoyVivika
     // MIT License. See LICENSE.md
@@ -486,3 +490,5 @@ namespace Voy.IntermediateAvatar.Utils
         }
     }
 }
+
+#endif

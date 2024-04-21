@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Animations;
 
@@ -129,3 +131,5 @@ namespace Voy.IntermediateAvatar.Utils
         }
     }
 }
+
+#endif

@@ -9,6 +9,8 @@ using UnityEditor.Animations;
 #endif
 using Voy.IntermediateAvatar;
 
+#if UNITY_EDITOR
+
 namespace Voy.IntermediateAvatar.Components
 {
     public class IAAvatar : MonoBehaviour
@@ -257,3 +259,5 @@ namespace Voy.IntermediateAvatar.Components
 
 #endif
         }
+
+#endif
