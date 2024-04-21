@@ -53,10 +53,10 @@ namespace Voy.IntermediateAvatar.Converter.ToIA
             iaAvatar.LipSyncJawOpenRotation = vrcAvatar.lipSyncJawOpen;
 
             //Eyelook
-            ToIA.VRChat.EyelookResolver(vrcAvatar, iaAvatar);
+            EyelookResolver(vrcAvatar, iaAvatar);
 
             //Animators
-            ToIA.VRChat.ResolveAnimators(vrcAvatar, iaAvatar);
+            ResolveAnimators(vrcAvatar, iaAvatar);
 
             //Process Animators
             ProcessAnimators(iaAvatar);
