@@ -964,16 +964,17 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
             leftEye.isLeft = true;
             leftEye.eyeTransform = iaAvatar.LeftEyeBone;
 
-            if (iaAvatar.EyeLookUp != null)
-            {
-                rightEye.eyeAngleLimitUp = getLookLimit(iaAvatar.EyeLookUp.Right.eulerAngles.x);
-                leftEye.eyeAngleLimitUp = getLookLimit(iaAvatar.EyeLookUp.Left.eulerAngles.x);
-            }
-
+            // WHY ARE EYELOOK DOWN/UP INVERTED!?!
             if (iaAvatar.EyeLookDown != null)
             {
-                rightEye.eyeAngleLimitDown = getLookLimit(iaAvatar.EyeLookDown.Right.eulerAngles.x);
-                leftEye.eyeAngleLimitDown = getLookLimit(iaAvatar.EyeLookDown.Left.eulerAngles.x);
+                rightEye.eyeAngleLimitUp = getLookLimit(iaAvatar.EyeLookDown.Right.eulerAngles.x);
+                leftEye.eyeAngleLimitUp = getLookLimit(iaAvatar.EyeLookDown.Left.eulerAngles.x);
+            }
+
+            if (iaAvatar.EyeLookUp != null)
+            {
+                rightEye.eyeAngleLimitDown = getLookLimit(iaAvatar.EyeLookUp.Right.eulerAngles.x);
+                leftEye.eyeAngleLimitDown = getLookLimit(iaAvatar.EyeLookUp.Left.eulerAngles.x);
             }
 
             // I hope I'm doing this right. Why in/out instead of left/right?
