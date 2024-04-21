@@ -5,8 +5,8 @@ using System.Linq;
 
 #if UNITY_EDITOR
 using Voy.IntermediateAvatar.Components;
-using Voy.IntermediateAvatar.Utils;
 using Voy.IntermediateAvatar.Behaviours;
+using Voy.IntermediateAvatar.Utils;
 using Voy.IntermediateAvatar;
 using UnityEditor;
 using UnityEditor.Animations;
@@ -53,10 +53,10 @@ namespace Voy.IntermediateAvatar.Converter.ToIA
             iaAvatar.LipSyncJawOpenRotation = vrcAvatar.lipSyncJawOpen;
 
             //Eyelook
-            EyelookResolver(vrcAvatar, iaAvatar);
+            ToIA.VRChat.EyelookResolver(vrcAvatar, iaAvatar);
 
             //Animators
-            ResolveAnimators(vrcAvatar, iaAvatar);
+            ToIA.VRChat.ResolveAnimators(vrcAvatar, iaAvatar);
 
             //Process Animators
             ProcessAnimators(iaAvatar);

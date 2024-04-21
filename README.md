@@ -82,7 +82,6 @@ from IA to CVR the Utility will Convert:
 - Parameter Driver Animator State Behaviour to CVR Animator Drivers Behaviour
 - Tracking Control Animator State Behaviour to CVR Body Control Behaviour
 - LipSync (Viseme, Jaw-Flap, Jaw-Bone (sort of))
-- Bone/Transform based EyeLook
 
 If you're converting from VRChat to ChilloutVR I can guarantee that this WILL mostly work if:
 - Your Avatar isn't too Reliant on VRChat Specific Implementations of Features

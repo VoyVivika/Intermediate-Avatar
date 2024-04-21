@@ -504,7 +504,10 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
             animators.Add(AssetDatabase.LoadAssetAtPath<AnimatorController>("Assets/ABI.CCK/Animations/AvatarAnimator.controller"));
             types.Add(AnimatorType.GameDefault);
 
-            foreach(AvatarAnimatorDefinition definition in iaAvatar.BaseAnimatorLayers)
+            animators.Add(AssetDatabase.LoadAssetAtPath<AnimatorController>("Assets/Voy/AvatarIntermediateUtil/Converters/ChilloutVR/VRC Gesture Translator.controller"));
+            types.Add(AnimatorType.GameDefault);
+
+            foreach (AvatarAnimatorDefinition definition in iaAvatar.BaseAnimatorLayers)
             {
                 if (definition.animator == null) continue; // no point in processing a null value
 

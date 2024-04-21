@@ -41,6 +41,8 @@ namespace Voy.IntermediateAvatar.Utils
 
             foreach (Component component in components)
             {
+                if (component == null) continue;
+
                 //Debug.Log(component.name);
                 SerializedObject obj = new SerializedObject(component);
                 SerializedProperty prop = obj.GetIterator();
