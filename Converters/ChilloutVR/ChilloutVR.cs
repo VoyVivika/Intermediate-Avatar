@@ -968,16 +968,17 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
             leftEye.eyeTransform = iaAvatar.LeftEyeBone;
 
             // WHY ARE EYELOOK DOWN/UP INVERTED!?!
-            if (iaAvatar.EyeLookDown != null)
-            {
-                rightEye.eyeAngleLimitUp = getLookLimit(iaAvatar.EyeLookDown.Right.eulerAngles.x);
-                leftEye.eyeAngleLimitUp = getLookLimit(iaAvatar.EyeLookDown.Left.eulerAngles.x);
-            }
-
+            // Update: so apparently they're not inverted... they follow Unity's Rig Standard where Up is Negative and Down is Positive... geniuses at Unity.
             if (iaAvatar.EyeLookUp != null)
             {
-                rightEye.eyeAngleLimitDown = getLookLimit(iaAvatar.EyeLookUp.Right.eulerAngles.x);
-                leftEye.eyeAngleLimitDown = getLookLimit(iaAvatar.EyeLookUp.Left.eulerAngles.x);
+                rightEye.eyeAngleLimitUp = getLookLimit(iaAvatar.EyeLookUp.Right.eulerAngles.x) * -1f;
+                leftEye.eyeAngleLimitUp = getLookLimit(iaAvatar.EyeLookUp.Left.eulerAngles.x) * -1f;
+            }
+
+            if (iaAvatar.EyeLookDown != null)
+            {
+                rightEye.eyeAngleLimitDown = getLookLimit(iaAvatar.EyeLookDown.Right.eulerAngles.x) * -1;
+                leftEye.eyeAngleLimitDown = getLookLimit(iaAvatar.EyeLookDown.Left.eulerAngles.x) * -1;
             }
 
             // I hope I'm doing this right. Why in/out instead of left/right?
