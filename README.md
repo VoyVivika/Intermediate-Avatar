@@ -25,16 +25,12 @@ Will Not = ⛔
 
 IA = Intermediate Avatar, this System
 
-| Platform/Game | Import (Into IA) | Export (From IA) | Minimum Supported SDK/CCK Version     |
-|:-------------:|:----------------:|:----------------:|:-------------------------------------:|
-| VRChat        |       ✅         |        ❌        | SDK 3.5.0 (2022.3.6f1)                |
-| ChilloutVR    |       ❌         |        ✅        | CCK 3.9 (2021.3.23f1)                 |
+| Platform/Game | Import (Into IA) | Export (From IA) | Minimum Known Supported SDK/CCK Version     |
+|:-------------:|:----------------:|:----------------:|:-------------------------------------------:|
+| VRChat        |       ✅         |        ❌        | SDK 3.5.0 (2022.3.6f1)                      |
+| ChilloutVR    |       ❌         |        ✅        | CCK 3.9 (2021.3.23f1)                       |
 
 Resonite/Neos do not have Unity Editor SDKs, it will not be supported because it cannot be supported.
-
-**Todo:**
-- Upgrade Supported VRC SDK Version to Latest to Support Newer Features (3.5.2 as of writing)
-- Upgrade Supported CVR CCK Version to Latest to Support Newer Features (3.9 as of writing)
 
 ## How do I convert an Avatar from One of the Supported Platforms to Another?
 
