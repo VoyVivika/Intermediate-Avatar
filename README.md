@@ -28,7 +28,7 @@ IA = Intermediate Avatar, this System
 | Platform/Game | Import (Into IA) | Export (From IA) | Minimum Supported SDK/CCK Version     |
 |:-------------:|:----------------:|:----------------:|:-------------------------------------:|
 | VRChat        |       ✅         |        ❌        | SDK 3.5.0 (2022.3.6f1)                |
-| ChilloutVR    |       ❌         |        ✅        | CCK 3.8 (2021.3.23f1)                 |
+| ChilloutVR    |       ❌         |        ✅        | CCK 3.9 (2021.3.23f1)                 |
 
 Resonite/Neos do not have Unity Editor SDKs, it will not be supported because it cannot be supported.
 
