@@ -91,7 +91,7 @@ namespace Voy.IntermediateAvatar.Components
                 if (isType & isValid)
                 {
                     combiner.runtimeAnimatorControllers.Add(definition.animator);
-                    
+
                 }
             }
 
@@ -167,9 +167,11 @@ namespace Voy.IntermediateAvatar.Components
 
 #if UNITY_EDITOR
 
+    [SerializeField]
     [CustomEditor(typeof(IAAvatar))]
     class IntermAvatarEditor : Editor
     {
+
         bool showDebug = false;
         bool convertVRCActionLayer = false;
         bool convertVRCHandLayer = false;
@@ -249,7 +251,8 @@ namespace Voy.IntermediateAvatar.Components
                 Debug.Log("CVR Button Clicked");
 
             }
-            EditorGUILayout.LabelField("The following aren't recommended and may not work as desired:", GUILayout.ExpandHeight(true));
+
+            EditorGUILayout.LabelField("The following aren't recommended and may not work as desired:");
             convertVRCActionLayer = EditorGUILayout.ToggleLeft("Convert VRC Action/Emote Layer", convertVRCActionLayer);
             convertVRCHandLayer = EditorGUILayout.ToggleLeft("Convert VRC Hand Layers", convertVRCHandLayer);
 
@@ -258,6 +261,6 @@ namespace Voy.IntermediateAvatar.Components
     }
 
 #endif
-        }
+}
 
 #endif

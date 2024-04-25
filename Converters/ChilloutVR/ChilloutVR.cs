@@ -187,7 +187,7 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
 
             Dictionary<string, List<MenuSystem.Option>> Toggles = GetOptionAssociations(iaAvatar.OptionsSettings);
 
-            List<RenameDefinition> renames = GetLocalRenameDefinitions(iaAvatar.Parameters);
+            List<RenameDefinition> renames = GetLocalRenameDefinitions(iaAvatar.Parameters, iaAvatar);
 
             List<MenuSystem.Option> options = iaAvatar.OptionsSettings;
 
@@ -527,7 +527,7 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
                 animators.Add(AssetDatabase.LoadAssetAtPath<AnimatorController>(AssetDatabase.GetAssetPath(definition.animator)));
             }
 
-            AnimatorController animator = AnimatorRebuilder.ProcessAndMerge(animators, types, GetLocalRenameDefinitions(iaAvatar.Parameters), AnimatorRebuilder.Mode.FromIA);
+            AnimatorController animator = AnimatorRebuilder.ProcessAndMerge(animators, types, GetLocalRenameDefinitions(iaAvatar.Parameters, iaAvatar), AnimatorRebuilder.Mode.FromIA);
 
             AnimatorOverrideController animatorOverride = new AnimatorOverrideController()
             { runtimeAnimatorController = animator };
@@ -560,7 +560,7 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
 
         }
 
-        private static List<RenameDefinition> GetLocalRenameDefinitions(List<MenuSystem.Parameter> parameters)
+        private static List<RenameDefinition> GetLocalRenameDefinitions(List<MenuSystem.Parameter> parameters, IAAvatar iaAvatar)
         {
             List<RenameDefinition> renameDefinitions = new List<RenameDefinition>();
             foreach (MenuSystem.Parameter parameter in parameters)
@@ -590,11 +590,32 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
                 }
                 );
             */
+
+            // This isn't going to be accurate to VRC's behaviour but I doubt many are using the 0-100 feature.
+            // if you are this is going to break something about your avatar... I'm gonna have to base my future spec on this to be absolutes cause
+            // this "conversion" thing doesn't work when one game and another game don't share the same behaviour.
+            // "It's just unity" that's not remotely true.
+            renameDefinitions.Add(
+                new RenameDefinition()
+                {
+                    oldName = "Viseme",
+                    newName = "VisemeIdx", // Core Parameter
+                    ignoreAnimatorType = AnimatorType.GameDefault
+                }
+                );
+            renameDefinitions.Add(
+                new RenameDefinition()
+                {
+                    oldName = "Voice",
+                    newName = "VisemeLoudness", // Core Parameter
+                    ignoreAnimatorType = AnimatorType.GameDefault
+                }
+                );
             renameDefinitions.Add(
                 new RenameDefinition()
                 {
                     oldName = "InStation",
-                    newName = "Sitting",
+                    newName = "Sitting", // Core Parameter
                     ignoreAnimatorType = AnimatorType.GameDefault
                 }
                 );
@@ -602,7 +623,7 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
                 new RenameDefinition()
                 {
                     oldName = "#iaLeftGesture",
-                    newName = "#GestureLeftIdxVRC",
+                    newName = "#GestureLeftIdxVRC", // Driven by Custom Animator Driver Animator
                     ignoreAnimatorType = AnimatorType.GameDefault
                 }
                 );
@@ -610,23 +631,7 @@ namespace Voy.IntermediateAvatar.Converter.FromIA
                 new RenameDefinition()
                 {
                     oldName = "#iaRightGesture",
-                    newName = "#GestureRightIdxVRC",
-                    ignoreAnimatorType = AnimatorType.GameDefault
-                }
-                );
-            renameDefinitions.Add(
-                new RenameDefinition()
-                {
-                    oldName = "iaLeftGesture",
-                    newName = "#GestureLeftIdxVRC",
-                    ignoreAnimatorType = AnimatorType.GameDefault
-                }
-                );
-            renameDefinitions.Add(
-                new RenameDefinition()
-                {
-                    oldName = "iaRightGesture",
-                    newName = "#GestureRightIdxVRC",
+                    newName = "#GestureRightIdxVRC", // Driven by Custom Animator Driver Animator
                     ignoreAnimatorType = AnimatorType.GameDefault
                 }
                 );
