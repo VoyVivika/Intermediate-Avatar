@@ -93,6 +93,4 @@ If you're converting from VRChat to ChilloutVR I can guarantee that this WILL mo
 - Your Shaders are using SPS-I Compatible Shaders
 	- I have a separate CVR Specific Utility for Checking this.
 
-VRCFury and SPS will NOT be directly supported by this utility. That is entirely out of the scope of this project.
-Fury is also not under a very permissive license so trying to make a variant of the utility isn't legally possible.
-Hey if you created Fury and think I'm wrong, if your repo lacks a license it's Source Available (look don't touch), add a License to your repo we're not gonna discuss this.
+VRCFury and SPS will NOT be directly supported by this utility.
