@@ -1,3 +1,5 @@
+# ⚠️ This is not being supported currently and has been left in a very buggy state, use with caution. ⚠️
+Due to my focus being needed for running events & maintaining/updating the map for a community I run, I cannot maintain this tool currently. It's welcomed that either pull-requests or a Hard Fork may occur, thank you for your interest and sorry I cannot keep building Intermediate Avatar at this time.
 # Intermediate Avatar System
 This Project Exists to provide a System to relatively easily port Avatars Between Games.
 
